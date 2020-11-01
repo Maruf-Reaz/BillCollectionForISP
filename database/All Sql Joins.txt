@@ -1,0 +1,29 @@
+-----------------------db_subscribers_view-------------------------
+
+CREATE VIEW db_subscribers_view AS
+SELECT db_subscribers.id AS id,
+db_subscribers.name AS NAME,
+db_subscribers.photo AS photo,
+db_subscribers.nid AS nid,
+db_subscribers.phone AS phone ,
+db_subscribers.email AS email,
+db_subscribers.present_address AS present_address,
+db_subscribers.permanent_address AS permanent_address,
+db_subscribers.package_id AS package_id,
+db_packages.name AS package_name,
+db_packages.cost AS package_cost,
+db_packages.speed AS package_speed,
+db_subscribers.location_id AS location_id,
+db_locations.name AS location_name,
+db_subscribers.location_serial_no AS location_serial_no,
+db_subscribers.registration_no AS registration_no,
+db_subscribers.status AS 'status',
+db_subscribers.joining_date AS joining_date,
+db_subscribers.deactivation_date AS deactivation_date,
+db_subscribers.notes AS notes
+
+FROM db_subscribers
+LEFT JOIN db_packages
+ON db_subscribers.package_id= db_packages.id
+LEFT JOIN db_locations
+ON db_subscribers.location_id= db_locations.id
